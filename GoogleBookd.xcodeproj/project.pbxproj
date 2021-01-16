@@ -99,6 +99,9 @@
 		A1BE532725B371B9007CBC3D /* GoogleBookd */ = {
 			isa = PBXGroup;
 			children = (
+				A1BE535A25B3730E007CBC3D /* Services */,
+				A1BE535925B37306007CBC3D /* ViewModels */,
+				A1BE535825B372FA007CBC3D /* Models */,
 				A1BE532825B371B9007CBC3D /* AppDelegate.swift */,
 				A1BE532A25B371B9007CBC3D /* SceneDelegate.swift */,
 				A1BE532C25B371B9007CBC3D /* ViewController.swift */,
@@ -126,6 +129,27 @@
 				A1BE534C25B371C1007CBC3D /* Info.plist */,
 			);
 			path = GoogleBookdUITests;
+			sourceTree = "<group>";
+		};
+		A1BE535825B372FA007CBC3D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A1BE535925B37306007CBC3D /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A1BE535A25B3730E007CBC3D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
