@@ -15,6 +15,19 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Services.search(with: "iOS") { (result) in
+            guard let result = result else { return }
+            result.items.forEach { (book) in
+                print("- ", book.volumeInfo.title)
+            }
+        }
+    }
 }
 
