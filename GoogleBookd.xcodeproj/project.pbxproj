@@ -22,6 +22,9 @@
 		A1BE536525B5B8DC007CBC3D /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536425B5B8DC007CBC3D /* Constant.swift */; };
 		A1BE536725B5B994007CBC3D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536625B5B994007CBC3D /* Router.swift */; };
 		A1BE536925B5BC62007CBC3D /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536825B5BC62007CBC3D /* Services.swift */; };
+		A1BE536C25B61235007CBC3D /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536B25B61235007CBC3D /* BookViewModel.swift */; };
+		A1BE536F25B627BD007CBC3D /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536E25B627BD007CBC3D /* ResultCollectionViewCell.swift */; };
+		A1BE537125B62811007CBC3D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE537025B62811007CBC3D /* ImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,9 @@
 		A1BE536425B5B8DC007CBC3D /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		A1BE536625B5B994007CBC3D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		A1BE536825B5BC62007CBC3D /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		A1BE536B25B61235007CBC3D /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
+		A1BE536E25B627BD007CBC3D /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		A1BE537025B62811007CBC3D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,17 +119,18 @@
 		A1BE532725B371B9007CBC3D /* GoogleBookd */ = {
 			isa = PBXGroup;
 			children = (
+				A1BE532825B371B9007CBC3D /* AppDelegate.swift */,
+				A1BE536D25B6279E007CBC3D /* Cells */,
+				A1BE535825B372FA007CBC3D /* Models */,
 				A1BE536125B5B8AA007CBC3D /* Others */,
 				A1BE535A25B3730E007CBC3D /* Services */,
+				A1BE536A25B611FF007CBC3D /* ViewControllers */,
 				A1BE535925B37306007CBC3D /* ViewModels */,
-				A1BE535825B372FA007CBC3D /* Models */,
-				A1BE532825B371B9007CBC3D /* AppDelegate.swift */,
-				A1BE532A25B371B9007CBC3D /* SceneDelegate.swift */,
-				A1BE532C25B371B9007CBC3D /* ViewController.swift */,
-				A1BE532E25B371B9007CBC3D /* Main.storyboard */,
 				A1BE533125B371C0007CBC3D /* Assets.xcassets */,
-				A1BE533325B371C0007CBC3D /* LaunchScreen.storyboard */,
 				A1BE533625B371C0007CBC3D /* Info.plist */,
+				A1BE533325B371C0007CBC3D /* LaunchScreen.storyboard */,
+				A1BE532E25B371B9007CBC3D /* Main.storyboard */,
+				A1BE532A25B371B9007CBC3D /* SceneDelegate.swift */,
 			);
 			path = GoogleBookd;
 			sourceTree = "<group>";
@@ -158,6 +165,7 @@
 		A1BE535925B37306007CBC3D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A1BE536B25B61235007CBC3D /* BookViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -168,6 +176,7 @@
 				A1BE535F25B5B81C007CBC3D /* ABRequest.swift */,
 				A1BE536625B5B994007CBC3D /* Router.swift */,
 				A1BE536825B5BC62007CBC3D /* Services.swift */,
+				A1BE537025B62811007CBC3D /* ImageCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -179,6 +188,22 @@
 				A1BE536425B5B8DC007CBC3D /* Constant.swift */,
 			);
 			path = Others;
+			sourceTree = "<group>";
+		};
+		A1BE536A25B611FF007CBC3D /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A1BE532C25B371B9007CBC3D /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A1BE536D25B6279E007CBC3D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A1BE536E25B627BD007CBC3D /* ResultCollectionViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,11 +338,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1BE536025B5B81C007CBC3D /* ABRequest.swift in Sources */,
+				A1BE537125B62811007CBC3D /* ImageCache.swift in Sources */,
 				A1BE535C25B5A7E9007CBC3D /* Book.swift in Sources */,
 				A1BE535E25B5B7A6007CBC3D /* SearchResult.swift in Sources */,
 				A1BE536525B5B8DC007CBC3D /* Constant.swift in Sources */,
 				A1BE536725B5B994007CBC3D /* Router.swift in Sources */,
+				A1BE536C25B61235007CBC3D /* BookViewModel.swift in Sources */,
 				A1BE536925B5BC62007CBC3D /* Services.swift in Sources */,
+				A1BE536F25B627BD007CBC3D /* ResultCollectionViewCell.swift in Sources */,
 				A1BE536325B5B8B4007CBC3D /* Utils.swift in Sources */,
 				A1BE532D25B371B9007CBC3D /* ViewController.swift in Sources */,
 				A1BE532925B371B9007CBC3D /* AppDelegate.swift in Sources */,
