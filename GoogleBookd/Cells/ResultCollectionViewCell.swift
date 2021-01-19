@@ -15,7 +15,7 @@ class ResultCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.contentView.layer.cornerRadius = 10
+        self.contentView.layer.cornerRadius = 4
         self.contentView.clipsToBounds = true
         
     }

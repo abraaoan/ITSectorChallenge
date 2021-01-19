@@ -25,6 +25,7 @@
 		A1BE536C25B61235007CBC3D /* BookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536B25B61235007CBC3D /* BookViewModel.swift */; };
 		A1BE536F25B627BD007CBC3D /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE536E25B627BD007CBC3D /* ResultCollectionViewCell.swift */; };
 		A1BE537125B62811007CBC3D /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE537025B62811007CBC3D /* ImageCache.swift */; };
+		A1F2F14425B63189003124CA /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F2F14325B63189003124CA /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		A1BE536B25B61235007CBC3D /* BookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookViewModel.swift; sourceTree = "<group>"; };
 		A1BE536E25B627BD007CBC3D /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
 		A1BE537025B62811007CBC3D /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		A1F2F14325B63189003124CA /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				A1BE536225B5B8B4007CBC3D /* Utils.swift */,
 				A1BE536425B5B8DC007CBC3D /* Constant.swift */,
+				A1F2F14325B63189003124CA /* Page.swift */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				A1BE537125B62811007CBC3D /* ImageCache.swift in Sources */,
 				A1BE535C25B5A7E9007CBC3D /* Book.swift in Sources */,
 				A1BE535E25B5B7A6007CBC3D /* SearchResult.swift in Sources */,
+				A1F2F14425B63189003124CA /* Page.swift in Sources */,
 				A1BE536525B5B8DC007CBC3D /* Constant.swift in Sources */,
 				A1BE536725B5B994007CBC3D /* Router.swift in Sources */,
 				A1BE536C25B61235007CBC3D /* BookViewModel.swift in Sources */,

@@ -14,7 +14,7 @@ enum Router {
     case getBookBy(id: String)
     
     private static let baseUrl = "https://www.googleapis.com/books/v1/volumes"
-    private static let perPage = 20
+    static let perPage = 20
     
     private var path: String {
         
@@ -31,7 +31,7 @@ enum Router {
         switch self {
         case .searchWith(let query, let page):
             var path = self.path.replacingOccurrences(of: ":query", with: query)
-            path = path.replacingOccurrences(of: ":page", with: String(page))
+            path = path.replacingOccurrences(of: ":page", with: String(page * Router.perPage))
             guard let searchUrl = URL(string: path) else { throw ErrorType.urlFail }
             return ABRequest.makeRequest(url: searchUrl)
         case .getBookBy(let bookId):

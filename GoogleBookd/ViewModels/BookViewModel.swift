@@ -12,9 +12,9 @@ class BookViewModel: NSObject {
     
     var book: Book {
         didSet {
-            if let amount = book.saleInfo.retailPrice?.amount {
+            if let amount = book.saleInfo?.retailPrice?.amount {
                 self.setPrice(price: amount)
-            } else if let amountInMicros = book.saleInfo.retailPrice?.amountInMicros {
+            } else if let amountInMicros = book.saleInfo?.retailPrice?.amountInMicros {
                 let price = amountInMicros / 100
                 self.setPrice(price: Double(price))
             }
@@ -32,24 +32,30 @@ class BookViewModel: NSObject {
     init(_ book: Book) {
         self.book = book
         
-        self.title = book.volumeInfo.title
-        self.bookDescription = book.volumeInfo.description
+        self.title = book.volumeInfo?.title ?? "-"
+        self.bookDescription = book.volumeInfo?.description ?? ""
         
-        if let saleability = book.saleInfo.saleability {
+        if let saleability = book.saleInfo?.saleability {
             self.isAvailable = saleability == "FOR_SALE"
         }
         
-        if let buyLink = book.saleInfo.buyLink {
+        if let buyLink = book.saleInfo?.buyLink {
             self.buyLink = buyLink
         }
         
-        if let imageUrl = book.volumeInfo.imageLinks["thumbnail"] {
+        if let imageUrl = book.volumeInfo?.imageLinks["thumbnail"] {
             self.imageUrl = URL(string: imageUrl)
         }
     }
     
     func setPrice(price: Double) {
-        self.price = "R$ \(price)"
+        
+        var currencySimbol = ""
+        
+        if let currencyCode = book.saleInfo?.retailPrice?.currencyCode{
+            currencySimbol = Utils.getSymbol(forCurrencyCode: currencyCode) ?? ""
+        }
+        
+        self.price = "\(currencySimbol) \(price)"
     }
-
 }

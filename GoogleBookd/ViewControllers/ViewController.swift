@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     var currentQuery: String = ""
     
     var bookList: [BookViewModel]?
+    var page: Page?
+    
+    let margin: CGFloat = (screenSize.width - 260) / 3
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,8 +70,6 @@ class ViewController: UIViewController {
     
     func loadResults(_ result: SearchResult, isPaging: Bool = false) {
         
-        //TODO: add paging
-        
         // Not found
         if result.totalItems == 0 {
             DispatchQueue.main.async { [weak self] in
@@ -78,6 +79,7 @@ class ViewController: UIViewController {
         
         if !isPaging {
             self.bookList = [BookViewModel]()
+            self.page = Page(result)
         }
         
         // Append new photos
@@ -89,6 +91,14 @@ class ViewController: UIViewController {
         DispatchQueue.main.async { [weak self] in
             self?.spinner.isHidden = true
             self?.collectionView.reloadData()
+        }
+        
+        // Load More
+        self.page?.loadNextPage = { (nextPage) in
+            Services.search(with: self.currentQuery, page: nextPage) { (books) in
+                guard let books = books else { return }
+                self.loadResults(books, isPaging: true)
+            }
         }
     }
     
@@ -160,7 +170,7 @@ extension ViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-        //TODO: Load more results
+        self.page?.shouldLoadMore(indexPath.row)
         
     }
 }
@@ -169,5 +179,24 @@ extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         // TODO: Navigate to Detail View
+    }
+}
+
+extension ViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: margin, left: margin, bottom: 0, right: margin)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 130, height: 180)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return margin
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
 }

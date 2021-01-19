@@ -8,11 +8,12 @@
 
 struct Book: Codable {
     
-    let kind: String
-    let id: String
-    let selfLink: String
-    let volumeInfo: VolumeInfo
-    let saleInfo: SaleInfo
+    let kind: String?
+    let id: String?
+    let etag: String? = nil
+    let selfLink: String?
+    let volumeInfo: VolumeInfo?
+    let saleInfo: SaleInfo?
     let accessInfo: [String: Any]? = nil
     let searchInfo: [String: Any]? = nil
     
@@ -23,17 +24,30 @@ struct Book: Codable {
         case volumeInfo
         case saleInfo
     }
+    
+    init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.kind = try? values.decode(String.self, forKey: .kind)
+        self.id = try? values.decode(String.self, forKey: .id)
+        self.selfLink = try? values.decode(String.self, forKey: .selfLink)
+        self.volumeInfo = try? values.decode(VolumeInfo.self, forKey: .volumeInfo)
+        self.saleInfo = try? values.decode(SaleInfo.self, forKey: .saleInfo)
+        
+    }
+    
 }
 
 struct VolumeInfo: Codable {
     
-    let title: String
-    let authors: [String]
-    let publisher: String
-    let publishedDate: String
-    let description: String
+    let title: String?
+    let authors: [String]?
+    let publisher: String?
+    let publishedDate: String?
+    let description: String?
     let readingModes: [String: Any]? = nil
-    let pageCount: Int
+    let pageCount: Int?
     let printType: String? = nil
     let categories: [String]? = nil
     let maturityRating: String? = nil
@@ -42,9 +56,10 @@ struct VolumeInfo: Codable {
     let panelizationSummary: [String: Any]? = nil
     let imageLinks: [String: String]
     let language: String? = nil
-    let previewLink: String
-    let infoLink: String
+    let previewLink: String? = nil
+    let infoLink: String?
     let canonicalVolumeLink: String? = nil
+    let industryIdentifiers: String? = nil
     
     private enum CodingKeys: String, CodingKey {
         case title
@@ -54,7 +69,6 @@ struct VolumeInfo: Codable {
         case description
         case pageCount
         case imageLinks
-        case previewLink
         case infoLink
     }
     
@@ -62,15 +76,14 @@ struct VolumeInfo: Codable {
         
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.title = try values.decode(String.self, forKey: .title)
-        self.authors = try values.decode([String].self, forKey: .authors)
-        self.publisher = try values.decode(String.self, forKey: .publisher)
-        self.publishedDate = try values.decode(String.self, forKey: .publishedDate)
-        self.description = try values.decode(String.self, forKey: .description)
-        self.pageCount = try values.decode(Int.self, forKey: .pageCount)
+        self.title = try? values.decode(String.self, forKey: .title)
+        self.publisher = try? values.decode(String.self, forKey: .publisher)
+        self.publishedDate = try? values.decode(String.self, forKey: .publishedDate)
+        self.description = try? values.decode(String.self, forKey: .description)
+        self.pageCount = try? values.decode(Int.self, forKey: .pageCount)
         self.imageLinks = try values.decode([String: String].self, forKey: .imageLinks)
-        self.previewLink = try values.decode(String.self, forKey: .title)
-        self.infoLink = try values.decode(String.self, forKey: .infoLink)
+        self.infoLink = try? values.decode(String.self, forKey: .infoLink)
+        self.authors = try? values.decode([String].self, forKey: .authors)
     }
 }
 
@@ -94,21 +107,11 @@ struct SaleInfo: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        self.country = try values.decode(String.self, forKey: .country)
-        self.saleability = try values.decode(String.self, forKey: .saleability)
-        self.isEbook = try values.decode(Bool.self, forKey: .isEbook)
-        
-        if values.contains(.buyLink) {
-            self.buyLink = try values.decode(String.self, forKey: .buyLink)
-        } else {
-            self.buyLink = nil
-        }
-        
-        if values.contains(.retailPrice) {
-            self.retailPrice = try values.decode(RetailPrice.self, forKey: .retailPrice)
-        } else {
-            self.retailPrice = nil
-        }
+        self.country = try? values.decode(String.self, forKey: .country)
+        self.saleability = try? values.decode(String.self, forKey: .saleability)
+        self.isEbook = try? values.decode(Bool.self, forKey: .isEbook)
+        self.buyLink = try? values.decode(String.self, forKey: .buyLink)
+        self.retailPrice = try? values.decode(RetailPrice.self, forKey: .retailPrice)
     }
 }
 
@@ -120,18 +123,8 @@ struct RetailPrice: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        if values.contains(.amount) {
-            self.amount = try values.decode(Double.self, forKey: .amount)
-        } else {
-            self.amount = nil
-        }
-        
-        if values.contains(.amountInMicros) {
-            self.amountInMicros = try values.decode(Int.self, forKey: .amountInMicros)
-        } else {
-            self.amountInMicros = nil
-        }
-        
-        self.currencyCode = try values.decode(String.self, forKey: .currencyCode)
+        self.amount = try? values.decode(Double.self, forKey: .amount)
+        self.amountInMicros = try? values.decode(Int.self, forKey: .amountInMicros)
+        self.currencyCode = try? values.decode(String.self, forKey: .currencyCode)
     }
 }
