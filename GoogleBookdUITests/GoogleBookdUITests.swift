@@ -22,22 +22,80 @@ class GoogleBookdUITests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() {
-        // UI tests must launch the application that they test.
+    
+    func testPaging() {
+        
         let app = XCUIApplication()
         app.launch()
+        
+        let searchTextField = app.textFields["search"]
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        wait(forElement: searchTextField, timeout: 5)
+        
+        app.keys["c"].tap()
+        app.keys["o"].tap()
+        app.keys["f"].tap()
+        app.keys["f"].tap()
+        app.keys["e"].tap()
+        app.keys["e"].tap()
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Go"]/*[[".keyboards",".buttons[\"go\"]",".buttons[\"Go\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        sleep(4)
+        
+        let collectionView = app.collectionViews.element
+        
+        collectionView.swipeUp()
+        sleep(1)
+        collectionView.swipeUp()
+        sleep(1)
+        collectionView.swipeUp()
+        sleep(1)
+        collectionView.swipeUp()
+        sleep(1)
+        collectionView.swipeUp()
+        sleep(1)
+        
     }
 
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testDetailNavigation() {
+        
+        let app = XCUIApplication()
+        app.launch()
+        
+        let searchTextField = app.textFields["search"]
+        wait(forElement: searchTextField, timeout: 5)
+        
+        app.keys["i"].tap()
+        app.keys["o"].tap()
+        app.keys["s"].tap()
+        
+        app/*@START_MENU_TOKEN@*/.buttons["Go"]/*[[".keyboards",".buttons[\"go\"]",".buttons[\"Go\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        sleep(4)
+        
+        let collectionViews = app.collectionViews
+        let cell = collectionViews.children(matching: .cell).element(boundBy: 6)
+        cell.tap()
+        
+        sleep(4)
+        
+        let closeButton = app.buttons["close"]
+        closeButton.tap()
+        
+        sleep(2)
+        
+    }
+    
+}
+
+extension XCTestCase {
+    func wait(forElement element: XCUIElement, timeout: TimeInterval) {
+        let predicate = NSPredicate(format: "exists == 1")
+
+        // This will make the test runner continously evalulate the
+        // predicate, and wait until it matches.
+        expectation(for: predicate, evaluatedWith: element)
+        waitForExpectations(timeout: timeout)
     }
 }

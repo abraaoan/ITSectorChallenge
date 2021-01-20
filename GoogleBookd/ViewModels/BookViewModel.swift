@@ -52,14 +52,13 @@ class BookViewModel: NSObject {
         if let authors = self.book.volumeInfo?.authors?.joined(separator: ", ") {
             self.authors = authors
         }
-        
     }
     
     func setPrice(price: Double) {
         
         var currencySimbol = ""
         
-        if let currencyCode = book.saleInfo?.retailPrice?.currencyCode{
+        if let currencyCode = book.saleInfo?.retailPrice?.currencyCode {
             currencySimbol = Utils.getSymbol(forCurrencyCode: currencyCode) ?? ""
         }
         

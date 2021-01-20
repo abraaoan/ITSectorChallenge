@@ -192,7 +192,7 @@ extension ViewController: UICollectionViewDataSource {
         let baseBook = isFilterOn ? filterBookList?[indexPath.row] : bookList?[indexPath.row]
         
         if let book = baseBook {
-            ImageCache.shared.load(book: book) { (book) in
+            ImageCache.shared.load(book: book) { (_) in
                 DispatchQueue.main.async {
                     cell.imageView.image = book.image
                 }
