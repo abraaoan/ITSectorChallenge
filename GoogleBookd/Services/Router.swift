@@ -36,8 +36,8 @@ enum Router {
             return ABRequest.makeRequest(url: searchUrl)
         case .getBookBy(let bookId):
             let path = self.path.replacingOccurrences(of: ":bookId", with: bookId)
-            guard let photoUrl = URL(string: path) else { throw ErrorType.urlFail }
-            return ABRequest.makeRequest(url: photoUrl)
+            guard let bookUrl = URL(string: path) else { throw ErrorType.urlFail }
+            return ABRequest.makeRequest(url: bookUrl)
         }
     }
 }

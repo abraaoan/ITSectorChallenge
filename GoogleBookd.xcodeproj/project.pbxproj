@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A1A49E4E25B8A20E00FF8E86 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A49E4D25B8A20E00FF8E86 /* Favorites.swift */; };
+		A1A49E5025B8AFB500FF8E86 /* DetailAuthorsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1A49E4F25B8AFB400FF8E86 /* DetailAuthorsCell.swift */; };
 		A1BE532925B371B9007CBC3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE532825B371B9007CBC3D /* AppDelegate.swift */; };
 		A1BE532B25B371B9007CBC3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE532A25B371B9007CBC3D /* SceneDelegate.swift */; };
 		A1BE532D25B371B9007CBC3D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE532C25B371B9007CBC3D /* ViewController.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		A1A49E4D25B8A20E00FF8E86 /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		A1A49E4F25B8AFB400FF8E86 /* DetailAuthorsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAuthorsCell.swift; sourceTree = "<group>"; };
 		A1BE532525B371B9007CBC3D /* GoogleBookd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoogleBookd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BE532825B371B9007CBC3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1BE532A25B371B9007CBC3D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				A1F2F14D25B752AA003124CA /* DetailPriceCell.swift */,
 				A1F2F14F25B752BD003124CA /* DetailDescriptionCell.swift */,
 				A1F2F15125B752CB003124CA /* DetailPropertieCell.swift */,
+				A1A49E4F25B8AFB400FF8E86 /* DetailAuthorsCell.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				A1BE536025B5B81C007CBC3D /* ABRequest.swift in Sources */,
 				A1F2F15025B752BD003124CA /* DetailDescriptionCell.swift in Sources */,
 				A1BE537125B62811007CBC3D /* ImageCache.swift in Sources */,
+				A1A49E5025B8AFB500FF8E86 /* DetailAuthorsCell.swift in Sources */,
 				A1F2F14E25B752AA003124CA /* DetailPriceCell.swift in Sources */,
 				A1BE535C25B5A7E9007CBC3D /* Book.swift in Sources */,
 				A1BE535E25B5B7A6007CBC3D /* SearchResult.swift in Sources */,

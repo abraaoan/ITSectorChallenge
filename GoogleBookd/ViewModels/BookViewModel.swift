@@ -20,6 +20,7 @@ class BookViewModel: NSObject {
     var isAvailable: Bool = false
     var buyLink: String?
     var price: String?
+    var authors: String?
     
     init(_ book: Book) {
         self.book = book
@@ -47,6 +48,11 @@ class BookViewModel: NSObject {
             let price = amountInMicros / 100
             self.setPrice(price: Double(price))
         }
+        
+        if let authors = self.book.volumeInfo?.authors?.joined(separator: ", ") {
+            self.authors = authors
+        }
+        
     }
     
     func setPrice(price: Double) {

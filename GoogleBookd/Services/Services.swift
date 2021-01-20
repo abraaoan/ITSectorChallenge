@@ -12,18 +12,18 @@ class Services: NSObject {
 
     static func search(with query: String, page: Int = 1, completion: @escaping (SearchResult?) -> ()) {
         
-        let photosRouter = Router.searchWith(query: query, page: page)
+        let booksRouter = Router.searchWith(query: query, page: page)
         let abrequest = ABRequest()
         
         do {
-            guard let request = try photosRouter.request() else {
+            guard let request = try booksRouter.request() else {
                 return
             }
             
             abrequest.requestObject(of: SearchResult.self, request: request) { (result) in
                 switch result {
-                case .success(let photos):
-                    completion(photos as? SearchResult)
+                case .success(let books):
+                    completion(books as? SearchResult)
                 case .failure(let error):
                     completion(nil)
                     print("[Service]: parser error. \(error.localizedDescription)")
@@ -37,11 +37,11 @@ class Services: NSObject {
     
     static func getDetail(with bookId: String, completion: @escaping (Book?)->()) {
         
-        let photosRouter = Router.getBookBy(id: bookId)
+        let bookRouter = Router.getBookBy(id: bookId)
         let abrequest = ABRequest()
         
         do {
-            guard let request = try photosRouter.request() else {
+            guard let request = try bookRouter.request() else {
                 return
             }
             

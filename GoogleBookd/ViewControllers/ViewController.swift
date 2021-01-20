@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     var isFilterOn = false
     
     var bookList: [BookViewModel]?
+    var filterBookList: [BookViewModel]?
     var page: Page?
     
     let margin: CGFloat = (screenSize.width - 260) / 3
@@ -148,6 +149,13 @@ class ViewController: UIViewController {
         self.isFilterOn = !self.isFilterOn
         self.btnFilter.setImage(isFilterOn ? #imageLiteral(resourceName: "filterHi") : #imageLiteral(resourceName: "filter"), for: .normal)
         
+        filterBookList = self.bookList?.filter { favorites.isBookLiked($0.id ?? "") }
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.spinner.isHidden = true
+            self?.collectionView.reloadData()
+        }
+        
     }
     
     
@@ -172,7 +180,7 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return bookList?.count ?? 0
+        return isFilterOn ? (filterBookList?.count ?? 0) : (bookList?.count ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -181,8 +189,10 @@ extension ViewController: UICollectionViewDataSource {
         
         cell.imageView.image = UIImage(systemName: "rectangle")!
         
-        if let book = bookList?[indexPath.row] {
-            ImageCache.shared.load(book: book) { (photo) in
+        let baseBook = isFilterOn ? filterBookList?[indexPath.row] : bookList?[indexPath.row]
+        
+        if let book = baseBook {
+            ImageCache.shared.load(book: book) { (book) in
                 DispatchQueue.main.async {
                     cell.imageView.image = book.image
                 }

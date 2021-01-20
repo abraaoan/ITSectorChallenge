@@ -13,9 +13,9 @@ class DetailViewController: UIViewController {
     enum Sections: Int {
         case image = 0
         case title
+        case authors
         case price
         case description
-        case properties
         
         static var count: Int { return description.rawValue + 1 }
         
@@ -29,8 +29,8 @@ class DetailViewController: UIViewController {
                 return 44
             case .description:
                 return UITableView.automaticDimension
-            case .properties:
-                return 30
+            case .authors:
+                return UITableView.automaticDimension
             }
         }
         
@@ -44,8 +44,8 @@ class DetailViewController: UIViewController {
                 return "idPrice"
             case .description:
                 return "idDescription"
-            case .properties:
-                return "idProperties"
+            case .authors:
+                return "idAuthors"
             }
         }
     }
@@ -61,7 +61,19 @@ class DetailViewController: UIViewController {
         tableView.separatorStyle = .none
         tableView.tableFooterView = UIView(frame: .zero)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         updateBtnIcon()
+        
     }
     
     @IBAction func close(_ sender: UIButton) {
@@ -141,8 +153,9 @@ extension DetailViewController: UITableViewDataSource {
             cell.bookDescriptionLabel.text = bookViewModel?.bookDescription
             
             return cell
-        case .properties:
-            let cell = baseCell as! DetailPropertieCell
+        case .authors:
+            let cell = baseCell as! DetailAuthorsCell
+            cell.bookAuthors.text = bookViewModel?.authors
             return cell
         }
     }
