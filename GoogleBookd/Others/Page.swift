@@ -28,7 +28,7 @@ class Page: NSObject {
         if index == 0 { return }
         
         let indexPage = floor(Double(index) / Double(loadNextWhenIndexEqual))
-        if Int(indexPage) == nextPage { return }
+        if Int(indexPage) + 1 != nextPage { return }
         
         if index % loadNextWhenIndexEqual == 0 {
             loadNextPage?(nextPage)

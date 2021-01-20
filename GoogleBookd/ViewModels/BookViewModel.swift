@@ -10,16 +10,8 @@ import UIKit
 
 class BookViewModel: NSObject {
     
-    var book: Book {
-        didSet {
-            if let amount = book.saleInfo?.retailPrice?.amount {
-                self.setPrice(price: amount)
-            } else if let amountInMicros = book.saleInfo?.retailPrice?.amountInMicros {
-                let price = amountInMicros / 100
-                self.setPrice(price: Double(price))
-            }
-        }
-    }
+    let id: String?
+    var book: Book
     var image: UIImage?
     var imageUrl: URL?
     var detailImageUrl: URL?
@@ -31,7 +23,7 @@ class BookViewModel: NSObject {
     
     init(_ book: Book) {
         self.book = book
-        
+        self.id = book.id
         self.title = book.volumeInfo?.title ?? "-"
         self.bookDescription = book.volumeInfo?.description ?? ""
         
@@ -45,6 +37,15 @@ class BookViewModel: NSObject {
         
         if let imageUrl = book.volumeInfo?.imageLinks["thumbnail"] {
             self.imageUrl = URL(string: imageUrl)
+        }
+        
+        super.init()
+        
+        if let amount = book.saleInfo?.retailPrice?.amount {
+            self.setPrice(price: amount)
+        } else if let amountInMicros = book.saleInfo?.retailPrice?.amountInMicros {
+            let price = amountInMicros / 100
+            self.setPrice(price: Double(price))
         }
     }
     

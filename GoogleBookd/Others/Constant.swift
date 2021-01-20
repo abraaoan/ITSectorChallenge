@@ -9,3 +9,4 @@
 import UIKit
 
 let screenSize = UIScreen.main.bounds.size
+let kLikes = "kLikes"

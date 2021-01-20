@@ -9,5 +9,15 @@
 struct SearchResult: Codable {
     let kind: String
     let totalItems: Int
-    let items: [Book]
+    let items: [Book]?
+    
+    init(from decoder: Decoder) throws {
+        
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.kind = try values.decode(String.self, forKey: .kind)
+        self.totalItems = try values.decode(Int.self, forKey: .totalItems)
+        self.items = try? values.decode([Book].self, forKey: .items)
+        
+    }
+    
 }

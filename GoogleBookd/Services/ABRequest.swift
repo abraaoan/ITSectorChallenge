@@ -75,8 +75,8 @@ class ABRequest: NSObject, URLSessionDelegate, URLSessionDataDelegate {
             }
             
             // --- For Debug
-            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) ?? ""
-            print("ResponseString = \(String(describing: responseString))")
+//            let responseString = NSString(data: data!, encoding: String.Encoding.utf8.rawValue) ?? ""
+//            print("ResponseString = \(String(describing: responseString))")
             
             
             

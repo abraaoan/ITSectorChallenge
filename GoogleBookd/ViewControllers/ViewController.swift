@@ -14,8 +14,12 @@ class ViewController: UIViewController {
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchView: UIView!
     @IBOutlet var spinner: UIView!
+    @IBOutlet var btnFilter: UIButton!
+    
+    let favorites = Favorites.shared
     
     var currentQuery: String = ""
+    var isFilterOn = false
     
     var bookList: [BookViewModel]?
     var page: Page?
@@ -35,6 +39,8 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.searchTextField.becomeFirstResponder()
         
     }
     
@@ -82,13 +88,18 @@ class ViewController: UIViewController {
             self.page = Page(result)
         }
         
-        // Append new photos
-        result.items.forEach { (book) in
+        result.items?.forEach { (book) in
             let bookViewModel = BookViewModel(book)
             self.bookList?.append(bookViewModel)
         }
         
         DispatchQueue.main.async { [weak self] in
+            
+            if result.totalItems > 0 {
+                self?.btnFilter.alpha = 1
+                self?.btnFilter.isEnabled = true
+            }
+            
             self?.spinner.isHidden = true
             self?.collectionView.reloadData()
         }
@@ -103,6 +114,9 @@ class ViewController: UIViewController {
     }
     
     func clearResults() {
+        self.isFilterOn = false
+        self.btnFilter.alpha = 0.5
+        self.btnFilter.isEnabled = false
         self.searchTextField.resignFirstResponder()
         self.removeMsgNotFound()
         self.bookList?.removeAll()
@@ -128,6 +142,15 @@ class ViewController: UIViewController {
             notFoundLabel.removeFromSuperview()
         }
     }
+    
+    @IBAction func filter(_ sender: UIButton) {
+        
+        self.isFilterOn = !self.isFilterOn
+        self.btnFilter.setImage(isFilterOn ? #imageLiteral(resourceName: "filterHi") : #imageLiteral(resourceName: "filter"), for: .normal)
+        
+    }
+    
+    
 }
 
 extension ViewController: UITextFieldDelegate {
@@ -178,7 +201,14 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        // TODO: Navigate to Detail View
+        guard let book = bookList?[indexPath.row] else { return }
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let viewController = storyboard.instantiateViewController(identifier: "idDetail")
+        if let detailViewControler = viewController as? DetailViewController {
+            detailViewControler.bookViewModel = book
+            self.present(detailViewControler, animated: true, completion: nil)
+        }
     }
 }
 

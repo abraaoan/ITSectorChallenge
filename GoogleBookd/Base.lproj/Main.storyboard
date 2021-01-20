@@ -20,13 +20,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="64"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lWS-F0-atb" userLabel="bgSearchField">
-                                        <rect key="frame" x="16" y="10" width="382" height="44"/>
+                                        <rect key="frame" x="16" y="10" width="340" height="44"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loupe" translatesAutoresizingMaskIntoConstraints="NO" id="EgO-ij-uS1">
                                                 <rect key="frame" x="16" y="14" width="16" height="16"/>
                                             </imageView>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-Hy-EbA">
-                                                <rect key="frame" x="40" y="11.5" width="326" height="21"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dw3-Hy-EbA">
+                                                <rect key="frame" x="40" y="11.5" width="288" height="21"/>
                                                 <color key="tintColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -40,9 +40,9 @@
                                         <constraints>
                                             <constraint firstItem="EgO-ij-uS1" firstAttribute="centerY" secondItem="lWS-F0-atb" secondAttribute="centerY" id="75d-uz-gq9"/>
                                             <constraint firstItem="Dw3-Hy-EbA" firstAttribute="centerY" secondItem="lWS-F0-atb" secondAttribute="centerY" id="DY2-5v-YWu"/>
+                                            <constraint firstAttribute="trailing" secondItem="Dw3-Hy-EbA" secondAttribute="trailing" constant="12" id="MZr-Ed-C7A"/>
                                             <constraint firstItem="EgO-ij-uS1" firstAttribute="leading" secondItem="lWS-F0-atb" secondAttribute="leading" constant="16" id="Qny-Zj-Ejo"/>
                                             <constraint firstItem="Dw3-Hy-EbA" firstAttribute="leading" secondItem="EgO-ij-uS1" secondAttribute="trailing" constant="8" id="bss-kO-tFt"/>
-                                            <constraint firstAttribute="trailing" secondItem="Dw3-Hy-EbA" secondAttribute="trailing" constant="16" id="hcG-du-ZMM"/>
                                             <constraint firstItem="EgO-ij-uS1" firstAttribute="centerY" secondItem="lWS-F0-atb" secondAttribute="centerY" id="iKF-wX-9I1"/>
                                             <constraint firstAttribute="height" constant="44" id="sA3-SU-LvD"/>
                                         </constraints>
@@ -52,12 +52,27 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFv-pC-Umn">
+                                        <rect key="frame" x="368" y="17" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Xha-kc-yuL"/>
+                                            <constraint firstAttribute="width" constant="30" id="unF-xX-WEG"/>
+                                        </constraints>
+                                        <state key="normal" image="filter"/>
+                                        <state key="highlighted" image="filterHi"/>
+                                        <connections>
+                                            <action selector="filter:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WAO-oK-VSL"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="lWS-F0-atb" secondAttribute="trailing" constant="16" id="7p2-kQ-DYO"/>
+                                    <constraint firstItem="fFv-pC-Umn" firstAttribute="leading" secondItem="lWS-F0-atb" secondAttribute="trailing" constant="12" id="58I-Xk-6Tx"/>
+                                    <constraint firstItem="fFv-pC-Umn" firstAttribute="centerY" secondItem="lfn-z3-rTc" secondAttribute="centerY" id="5YK-In-QoI"/>
                                     <constraint firstAttribute="height" constant="64" id="Rsi-Rq-DlU"/>
+                                    <constraint firstAttribute="trailing" secondItem="fFv-pC-Umn" secondAttribute="trailing" constant="16" id="Xc4-NR-pOF"/>
                                     <constraint firstItem="lWS-F0-atb" firstAttribute="leading" secondItem="lfn-z3-rTc" secondAttribute="leading" constant="16" id="gr7-x0-uGR"/>
+                                    <constraint firstItem="lWS-F0-atb" firstAttribute="centerY" secondItem="lfn-z3-rTc" secondAttribute="centerY" id="p6q-wx-wUa"/>
                                     <constraint firstItem="lWS-F0-atb" firstAttribute="centerY" secondItem="lfn-z3-rTc" secondAttribute="centerY" id="pPu-37-epL"/>
                                 </constraints>
                             </view>
@@ -140,6 +155,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="btnFilter" destination="fFv-pC-Umn" id="cGK-M8-oMC"/>
                         <outlet property="collectionView" destination="jgY-9Q-dqI" id="21a-lt-5Eo"/>
                         <outlet property="searchTextField" destination="Dw3-Hy-EbA" id="m6C-Yk-SKd"/>
                         <outlet property="searchView" destination="lfn-z3-rTc" id="yZX-XC-jdT"/>
@@ -150,8 +166,219 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
         </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="uNp-yR-x3J">
+            <objects>
+                <viewController storyboardIdentifier="idDetail" id="PDt-nq-R1m" customClass="DetailViewController" customModule="GoogleBookd" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mMV-DK-HXR">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NXQ-3t-RVL">
+                                <rect key="frame" x="0.0" y="-10" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idImage" rowHeight="180" id="Wri-n0-7DV" customClass="DetailImageCell" customModule="GoogleBookd" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="180"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Wri-n0-7DV" id="PaT-wV-NY5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="180"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3K7-FG-1xB">
+                                                    <rect key="frame" x="20" y="11" width="374" height="158"/>
+                                                </imageView>
+                                                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwP-hl-1h5" userLabel="likeButton">
+                                                    <rect key="frame" x="36" y="148" width="33" height="29"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="17"/>
+                                                    <state key="normal" image="icLike">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                                    </state>
+                                                    <state key="highlighted" image="icLikeHi"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="20"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="like:" destination="Wri-n0-7DV" eventType="touchUpInside" id="M1F-ic-0cP"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3K7-FG-1xB" firstAttribute="top" secondItem="PaT-wV-NY5" secondAttribute="topMargin" id="2hC-BF-1Aq"/>
+                                                <constraint firstItem="YwP-hl-1h5" firstAttribute="bottom" secondItem="PaT-wV-NY5" secondAttribute="bottomMargin" constant="8" id="EyP-0e-XeT"/>
+                                                <constraint firstItem="YwP-hl-1h5" firstAttribute="leading" secondItem="PaT-wV-NY5" secondAttribute="leadingMargin" constant="16" id="HIU-vi-oh6"/>
+                                                <constraint firstItem="3K7-FG-1xB" firstAttribute="leading" secondItem="PaT-wV-NY5" secondAttribute="leadingMargin" id="TAp-6v-vVx"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3K7-FG-1xB" secondAttribute="trailing" id="cbW-Hw-CQv"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="3K7-FG-1xB" secondAttribute="bottom" id="kx1-Py-Huy"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookImageView" destination="3K7-FG-1xB" id="fZY-8a-Sj4"/>
+                                            <outlet property="btnLike" destination="YwP-hl-1h5" id="ukS-VY-6Ux"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idTitle" id="YXc-3e-mJv" customClass="DetailTitleCell" customModule="GoogleBookd" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="208" width="414" height="48"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YXc-3e-mJv" id="vSJ-Sn-U0h">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book title name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dur-ZR-a42">
+                                                    <rect key="frame" x="32" y="8" width="350" height="32"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Dur-ZR-a42" secondAttribute="bottom" constant="8" id="Gor-KR-2l0"/>
+                                                <constraint firstItem="Dur-ZR-a42" firstAttribute="leading" secondItem="vSJ-Sn-U0h" secondAttribute="leading" constant="32" id="P2N-OD-CAR"/>
+                                                <constraint firstItem="Dur-ZR-a42" firstAttribute="top" secondItem="vSJ-Sn-U0h" secondAttribute="top" constant="8" id="Sx4-am-tw1"/>
+                                                <constraint firstAttribute="trailing" secondItem="Dur-ZR-a42" secondAttribute="trailing" constant="32" id="kX0-Ws-mmU"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookTitle" destination="Dur-ZR-a42" id="dtE-MS-Dh7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idPrice" id="KMr-kd-usH" customClass="DetailPriceCell" customModule="GoogleBookd" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="256" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KMr-kd-usH" id="ZFu-UD-rX2">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GJ2-4k-IfE">
+                                                    <rect key="frame" x="282" y="-0.5" width="100" height="44.5"/>
+                                                    <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="44" id="Ajh-AK-jZU"/>
+                                                        <constraint firstAttribute="width" constant="100" id="mZB-QB-WYI"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="black" pointSize="16"/>
+                                                    <state key="normal" title="Comprar">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="buy:" destination="KMr-kd-usH" eventType="touchUpInside" id="y1g-4C-Grj"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="R$ 999.99" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SkG-Lq-pdb">
+                                                    <rect key="frame" x="32" y="8.5" width="103.5" height="26.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="GJ2-4k-IfE" secondAttribute="trailing" constant="32" id="1hT-Ui-ygv"/>
+                                                <constraint firstItem="GJ2-4k-IfE" firstAttribute="centerY" secondItem="ZFu-UD-rX2" secondAttribute="centerY" id="J9e-mP-fw8"/>
+                                                <constraint firstItem="SkG-Lq-pdb" firstAttribute="centerY" secondItem="ZFu-UD-rX2" secondAttribute="centerY" id="Ont-Rp-uSs"/>
+                                                <constraint firstItem="GJ2-4k-IfE" firstAttribute="centerY" secondItem="ZFu-UD-rX2" secondAttribute="centerY" id="oJV-qG-8pt"/>
+                                                <constraint firstItem="SkG-Lq-pdb" firstAttribute="leading" secondItem="ZFu-UD-rX2" secondAttribute="leading" constant="32" id="pbK-ZI-CRo"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookPriceLabel" destination="SkG-Lq-pdb" id="nQt-7K-PoP"/>
+                                            <outlet property="btnBuy" destination="GJ2-4k-IfE" id="26m-N8-PWf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idDescription" id="LvS-ln-yze" customClass="DetailDescriptionCell" customModule="GoogleBookd" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="299.5" width="414" height="271.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LvS-ln-yze" id="PWk-nS-6ok">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="271.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hx-70-CV4">
+                                                    <rect key="frame" x="32" y="19" width="350" height="233.5"/>
+                                                    <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus aliquam varius odio, at dapibus neque venenatis at. Curabitur rhoncus faucibus ante, eget placerat magna maximus eu. Praesent varius odio et diam consectetur volutpat. Pellentesque fringilla aliquet dolor eget sagittis. Fusce efficitur tincidunt metus sit amet dignissim. Mauris euismod elementum ante a viverra. Phasellus sit amet libero tellus. Maecenas condimentum urna diam, vel sagittis ex posuere non. Integer sed mi consequat, imperdiet dolor nec, congue velit. Vivamus egestas urna non purus tincidunt maximus.</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6hx-70-CV4" firstAttribute="leading" secondItem="PWk-nS-6ok" secondAttribute="leading" constant="32" id="Vgu-RZ-ItW"/>
+                                                <constraint firstItem="6hx-70-CV4" firstAttribute="top" secondItem="PWk-nS-6ok" secondAttribute="topMargin" constant="8" id="xFO-tS-Rep"/>
+                                                <constraint firstAttribute="trailing" secondItem="6hx-70-CV4" secondAttribute="trailing" constant="32" id="yto-VF-siz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6hx-70-CV4" secondAttribute="bottom" constant="8" id="zhq-6s-o2A"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bookDescriptionLabel" destination="6hx-70-CV4" id="zr2-bh-wXo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="idProperties" id="lhC-tk-L9k" customClass="DetailPropertieCell" customModule="GoogleBookd" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="571" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lhC-tk-L9k" id="Pvt-G9-Ytt">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="PDt-nq-R1m" id="bES-ib-lWy"/>
+                                    <outlet property="delegate" destination="PDt-nq-R1m" id="qHT-BT-Hcq"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="usE-GX-sa9">
+                                <rect key="frame" x="358" y="60" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="MKh-LF-T5G"/>
+                                    <constraint firstAttribute="width" constant="40" id="t0q-2H-8X9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Kefa-Regular" family="Kefa" pointSize="17"/>
+                                <state key="normal" image="close">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="close:" destination="PDt-nq-R1m" eventType="touchUpInside" id="ARB-Va-4ld"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="pvR-sp-RxS" firstAttribute="trailing" secondItem="usE-GX-sa9" secondAttribute="trailing" constant="16" id="5iY-sW-4YU"/>
+                            <constraint firstItem="NXQ-3t-RVL" firstAttribute="top" secondItem="mMV-DK-HXR" secondAttribute="top" id="UTF-Pp-Aq8"/>
+                            <constraint firstAttribute="bottom" secondItem="NXQ-3t-RVL" secondAttribute="bottom" id="hsK-am-PgL"/>
+                            <constraint firstItem="NXQ-3t-RVL" firstAttribute="leading" secondItem="pvR-sp-RxS" secondAttribute="leading" id="iVk-ve-ods"/>
+                            <constraint firstItem="usE-GX-sa9" firstAttribute="top" secondItem="mMV-DK-HXR" secondAttribute="topMargin" constant="16" id="va1-nv-Shs"/>
+                            <constraint firstItem="NXQ-3t-RVL" firstAttribute="trailing" secondItem="pvR-sp-RxS" secondAttribute="trailing" id="ztr-5w-5b3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pvR-sp-RxS"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="NXQ-3t-RVL" id="3X2-kk-0r0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V1m-VL-JkS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="940.57971014492762" y="126.5625"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="close" width="17" height="17"/>
+        <image name="filter" width="26" height="25"/>
+        <image name="filterHi" width="26" height="25"/>
+        <image name="icLike" width="33" height="29"/>
+        <image name="icLikeHi" width="33" height="29"/>
         <image name="loupe" width="16" height="16"/>
     </resources>
 </document>
